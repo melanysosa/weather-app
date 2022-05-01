@@ -8,6 +8,7 @@ import {
 	BsCloudHaze,
 } from 'react-icons/bs';
 import { DateBuilder } from '../components/DateBuilder';
+import Header from '../components/Header';
 import { getweather } from '../services/getweather';
 
 const Landing = () => {
@@ -15,7 +16,9 @@ const Landing = () => {
 	const [location, setLocation] = useState('');
 
 	const getSearch = () => {
-		getweather(location).then((data) => setData(data));
+		getweather(location)
+		.then((data) => setData(data))
+		.catch((e)=>console.log(e) === alert('Invalid city'));
 	};
 
 	const enter = (e) => {
@@ -24,6 +27,7 @@ const Landing = () => {
 
 	return (
 		<div>
+			<Header/>
 			<div
 				className={
 					data.weather !== undefined
@@ -66,8 +70,8 @@ const Landing = () => {
 								</p>
 							) : null}
 						</div>
-
 						<div>
+						
 							<h2 className={data.name ? '' : 'date'}>
 								{DateBuilder(new Date())}
 							</h2>
@@ -109,31 +113,30 @@ const Landing = () => {
 									) : null}
 								</h1>
 							</div>
-						</div>	{data.name !== undefined && (
-						<div className='bottom'>
-							<div className='feels'>
-								{data.main ? <p>{data.main.feels_like}°C</p> : null}
-								<p>Feels like</p>
+						</div>{' '}
+						{data.name !== undefined && (
+							<div className='bottom'>
+								<div className='feels'>
+									{data.main ? <p>{data.main.feels_like}°C</p> : null}
+									<p>Feels like</p>
+								</div>
+								<div className='humidity'>
+									{data.main ? (
+										<p className='bold'>{data.main.humidity}%</p>
+									) : null}
+									<p>Humidity</p>
+								</div>
+								<div className='wind'>
+									{data.wind ? (
+										<p className='bold'>
+											{data.wind.speed.toFixed()} MPH
+										</p>
+									) : null}
+									<p>Wind Speed</p>
+								</div>
 							</div>
-							<div className='humidity'>
-								{data.main ? (
-									<p className='bold'>{data.main.humidity}%</p>
-								) : null}
-								<p>Humidity</p>
-							</div>
-							<div className='wind'>
-								{data.wind ? (
-									<p className='bold'>
-										{data.wind.speed.toFixed()} MPH
-									</p>
-								) : null}
-								<p>Wind Speed</p>
-							</div>
-						</div>
-					)}
+						)}
 					</div>
-
-				
 				</div>
 			</div>
 		</div>
