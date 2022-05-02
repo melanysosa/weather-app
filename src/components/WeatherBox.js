@@ -49,7 +49,7 @@ const WeatherBox = ({ data }) => {
 									) : data.weather[0].main === 'Thunderstorm' ? (
 										<BsCloudLightningRain />
 									) : data.weather[0].main ===
-									  ('Haze' || 'Mist' || 'Smooke') ? (
+									  'Haze' || 'Mist' || 'Smooke' ? (
 										<BsCloudHaze />
 									) : null
 								) : null}

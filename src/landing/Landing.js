@@ -39,7 +39,7 @@ const Landing = () => {
 						? 'app app_drizzle'
 						: data.weather[0].main === 'Thunderstorm'
 						? 'app app_thunderstorm'
-						: data.weather[0].main === ('Haze' || 'Mist' || 'Smooke')
+						: data.weather[0].main === 'Haze' || 'Mist' || 'Smooke'
 						? 'app app_haze'
 						: 'app'
 					: 'app'
