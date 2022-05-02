@@ -8,7 +8,7 @@ const Landing = () => {
 	const [location, setLocation] = useState('');
 
 	const searchLocation = () => {
-		getWeather(location)
+		getWeather({location})
 			.then((data) => setData(data))
 			.catch(
 				(e) =>
