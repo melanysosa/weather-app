@@ -22,19 +22,25 @@ export const DateBuilder = (d) => {
 		'Friday',
 		'Saturday',
 	];
+	const addZero = (i) => {
+		if (i < 10) {
+			i = '0' + i;
+		}
+		return i;
+	};
 
 	const day = days[d.getDay()];
-	const date = d.getDate();
+	const date = addZero(d.getDate());
 	const month = months[d.getMonth()];
 	const year = d.getFullYear();
 
-	const hour = d.getHours();
-	const minutes = d.getMinutes();
+	const hours = addZero(d.getHours());
+	const minutes = addZero(d.getMinutes());
 
 	return (
 		<div>
 			<div>{`${day} ${date} ${month} ${year} `}</div>
-			<div>{`${hour}:${minutes}hs`}</div>
+			<div>{`${hours}:${minutes}hs`}</div>
 		</div>
 	);
 };
