@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import WeatherBox from '../components/WeatherBox';
-import { getWeather } from '../services/getWeather';
+import { getWeatherLocation } from '../services/getWeatherLocation';
 import { DateBuilder } from '../components/DateBuilder';
 
 const Landing = () => {
@@ -8,7 +8,7 @@ const Landing = () => {
 	const [location, setLocation] = useState('');
 
 	const searchLocation = () => {
-		getWeather({location})
+		getWeatherLocation({ location })
 			.then((data) => setData(data))
 			.catch(
 				(e) =>
